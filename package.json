@@ -1,0 +1,25 @@
+{
+  "name": "splat2",
+  "version": "1.0.0",
+  "description": "Splat redo",
+  "scripts": {
+    "build": "coffee  -o lib -c src/*.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://htmlguy@github.com/geckogames/splat2.git"
+  },
+  "keywords": [
+    "splat",
+    "game"
+  ],
+  "author": "geckogames",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/geckogames/splat2/issues"
+  },
+  "homepage": "https://github.com/geckogames/splat2#readme",
+  "devDependencies": {
+    "coffee-script": "^1.10.0"
+  }
+}
