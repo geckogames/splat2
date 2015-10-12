@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Splat redo",
   "scripts": {
-    "build": "coffee  -o lib -c src/*.coffee"
+    "build": "cat src/*.coffee | coffee -s -c > splat.js"
   },
   "repository": {
     "type": "git",
