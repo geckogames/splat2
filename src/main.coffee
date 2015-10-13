@@ -20,7 +20,7 @@ render = ->
   ctx.textAlign = "center"
   ctx.fillStyle = "#fff"
   ctx.font = "10px sans-serif"
-  ctx.clearRect(0,0,canvas.width, canvas.height)
+  ctx.clearRect 0, 0, canvas.width, canvas.height
   ctx.fillText credits, canvas.width / 2, canvas.height - 10
 
   originx = screens[screen].calcOrigin()
