@@ -143,41 +143,22 @@
 
   downness = 0;
 
-  Object.prototype.indexOf = function(v) {
-    var key, val;
-    for (key in this) {
-      val = this[key];
-      if (val === v) {
-        return key;
-      }
-    }
-    return -1;
-  };
-
   window.onkeydown = function(e) {
-    var kcloc;
-    kcloc = keys.indexOf(e.keyCode);
-    if (kcloc !== -1) {
-      if (!keysdown[e.keyCode]) {
-        keysdown[e.keyCode] = 2;
-        if (e.keyCode === keys.down) {
-          downness += 1;
-          if (downness >= mindown) {
-            return canvas.classList.add("flipped");
-          }
-        } else {
-          return downness += downness > 0 ? -1 : 0;
+    if (!keysdown[e.keyCode]) {
+      keysdown[e.keyCode] = 2;
+      if (e.keyCode === keys.down) {
+        downness += 1;
+        if (downness >= mindown) {
+          return canvas.classList.add("flipped");
         }
+      } else {
+        return downness += downness > 0 ? -1 : 0;
       }
     }
   };
 
   window.onkeyup = function(e) {
-    var kcloc;
-    kcloc = keys.indexOf(e.keyCode);
-    if (kcloc !== -1) {
-      return keysdown[e.keyCode] = 0;
-    }
+    return keysdown[e.keyCode] = 0;
   };
 
   keyStatus = function(kname) {

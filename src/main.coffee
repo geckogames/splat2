@@ -90,30 +90,21 @@ keysdown = []
 
 downness = 0 # Figure it out yourself.
 
-# Array.indexOf for Objects
-Object::indexOf = (v) ->
-  for key, val of @
-    return key if val is v
-  -1
-
 # Triggered whenever a key is pressed down.
 window.onkeydown = (e) ->
-  kcloc = keys.indexOf e.keyCode
-  if kcloc isnt -1
-    if not keysdown[e.keyCode]
-      keysdown[e.keyCode] = 2
-      if e.keyCode is keys.down
-        downness += 1
-        if downness >= mindown
-          canvas.classList.add "flipped"
-      else
-        downness += if downness > 0 then -1 else 0
+  if not keysdown[e.keyCode]
+    keysdown[e.keyCode] = 2
+
+    if e.keyCode is keys.down
+      downness += 1
+      if downness >= mindown
+        canvas.classList.add "flipped"
+    else
+      downness += if downness > 0 then -1 else 0
 
 # Triggered whenever a key is released.
 window.onkeyup = (e) ->
-  kcloc = keys.indexOf e.keyCode
-  if kcloc isnt -1
-    keysdown[e.keyCode] = 0
+  keysdown[e.keyCode] = 0
 
 # Returns the status of a key by name from keysdown.
 keyStatus = (kname) -> keysdown[keys[kname]]
