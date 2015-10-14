@@ -23,12 +23,12 @@ render = ->
   ctx.clearRect 0, 0, canvas.width, canvas.height
   ctx.fillText credits, canvas.width / 2, canvas.height - 10
 
-  originx = screens[screen].calcOrigin()
+  originx = canvas.width / 2 - screens[screen].calcOrigin()
   originy = canvas.height / 2 + screens[screen].height / 2
 
   for i in screens[screen].items
     ctx.drawImage i.image,
-    originx - i.x, originy - i.y if i.image
+    originx - i.x, canvas.height - originy - i.y if i.image
 
 # This is the game loop.
 # Gets a timestamp.
