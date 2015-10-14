@@ -5,11 +5,20 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background: #62d32a;
+  background: #1d4399;
   background: linear-gradient(100deg, #1d4399 0%,#6084b3 100%);
   background: -o-linear-gradient(100deg, #1d4399 0%,#6084b3 100%);
   background: -webkit-gradient(100deg, #1d4399 0%,#6084b3 100%);
 }
+body.eggomylego {
+  background: #edc45a;
+  background: linear-gradient(100deg, #edc45a 0%, #e7cb39 100%);
+  background: -o-linear-gradient(100deg, #edc45a 0%, #e7cb39 100%);
+  background: -webkit-gradient(100deg, #edc45a 0%, #e7cb39 100%);
+}
 #cvas {
   display: block;
+}
+#cvas.flipped {
+  transform: scaleY(-1);
 }
