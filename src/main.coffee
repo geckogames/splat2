@@ -106,5 +106,5 @@ window.onkeydown = (e) ->
 window.onkeyup = (e) ->
   keysdown[e.keyCode] = 0
 
-# Returns the status of a key by name from keysdown.
-keyStatus = (kname) -> keysdown[keys[kname]]
+# Returns the status of a key by name or code from keysdown.
+keyStatus = (kid) -> keysdown[keys[kid] or kid]

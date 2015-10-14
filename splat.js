@@ -161,8 +161,8 @@
     return keysdown[e.keyCode] = 0;
   };
 
-  keyStatus = function(kname) {
-    return keysdown[keys[kname]];
+  keyStatus = function(kid) {
+    return keysdown[keys[kid] || kid];
   };
 
   Item = (function() {
