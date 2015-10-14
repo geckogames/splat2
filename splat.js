@@ -92,9 +92,7 @@
   Item = (function() {
     function Item() {}
 
-    Item.prototype.update = function() {
-      return console.log("UPDATE");
-    };
+    Item.prototype.update = function() {};
 
     Item.prototype.image = new Image;
 
