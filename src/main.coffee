@@ -32,7 +32,8 @@ render = ->
   ctx.fillStyle = "#fff"
   ctx.font = "10px sans-serif"
   ctx.clearRect 0, 0, canvas.width, canvas.height
-  ctx.fillText "#{credits} - v #{version}", canvas.width / 2, canvas.height - 10
+  ctx.fillText "#{config.credits} - v #{config.version}",
+  canvas.width / 2, canvas.height - 10
 
   for i in screens[screen].items
     coords = helpers.toCanvasTerms i.x, i.y, i.image.height
@@ -42,7 +43,7 @@ render = ->
 now = 0
 dt = 0
 last = helpers.timestamp()
-step = 1/fps
+step = 1/config.fps
 frame = ->
   now = helpers.timestamp()
   dt = dt + Math.min 1, (now - last) / 1000
@@ -72,7 +73,7 @@ canvas.onmouseup = (e) ->
       # Trigger the item's click event if the alpha of it's image is greater
       # than alphaThreshold at the click point.
       i.click() if helpers.getImageAlpha(i.image, e.clientX - coords.x,
-      e.clientY - coords.y) > alphaThreshold
+      e.clientY - coords.y) > config.alphaThreshold
 
 # A list of mapped keys that are down.
 # Values:
@@ -88,9 +89,9 @@ window.onkeydown = (e) ->
   if not keysdown[e.keyCode]
     keysdown[e.keyCode] = 2
 
-    if e.keyCode is keys.down
+    if e.keyCode is config.keys.down
       downness += 1
-      if downness >= mindown
+      if downness >= config.mindown
         canvas.classList.add "flipped"
     else
       downness += if downness > 0 then -1 else 0

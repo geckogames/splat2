@@ -40,4 +40,4 @@ helpers =
         i.music.volume = if @muted then 0 else 1
 
   # Returns the status of a key by name or code from keysdown.
-  keyStatus: (kid) -> keysdown[keys[kid] or kid]
+  keyStatus: (kid) -> keysdown[config.keys[kid] or kid]
