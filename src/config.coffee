@@ -8,6 +8,3 @@ config =
   version: "develop" # The version number
   eggo: 20
   mindown: 30
-
-screens = [] # The array (list) of screens
-screen = 0 # The screen to start on

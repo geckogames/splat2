@@ -1,6 +1,9 @@
 # Get the game canvas and the context for it.
 canvas = document.querySelector '#cvas'
 ctx = canvas.getContext '2d'
+# Set some essential variables.
+screens = [] # The array (list) of screens
+screen = 0 # The screen to start on
 
 # The update function is triggered every tick of the game.
 update = ->

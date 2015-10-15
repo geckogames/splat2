@@ -16,10 +16,6 @@
     mindown: 30
   };
 
-  screens = [];
-
-  screen = 0;
-
   helpers = {
     updateCanvasSize: function() {
       canvas.width = window.innerWidth || document.clientWidth || document.body.clientWidth;
@@ -70,6 +66,10 @@
   canvas = document.querySelector('#cvas');
 
   ctx = canvas.getContext('2d');
+
+  screens = [];
+
+  screen = 0;
 
   update = function() {
     var i, j, k, l, len, len1, len2, o, ref, results;
