@@ -1,6 +1,5 @@
 {
   "name": "splat2",
-  "version": "1.0.0",
   "description": "Splat redo",
   "scripts": {
     "build": "cat src/config.coffee src/main.coffee src/Item.coffee src/items/*.coffee src/screens/*.coffee | coffee -s -c > splat.js"

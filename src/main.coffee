@@ -33,7 +33,7 @@ render = ->
   ctx.fillStyle = "#fff"
   ctx.font = "10px sans-serif"
   ctx.clearRect 0, 0, canvas.width, canvas.height
-  ctx.fillText credits, canvas.width / 2, canvas.height - 10
+  ctx.fillText "#{credits} - v #{version}", canvas.width / 2, canvas.height - 10
 
   for i in screens[screen].items
     coords = toCanvasTerms i.x, i.y, i.image.height
