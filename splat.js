@@ -22,7 +22,7 @@
 
   mindown = 30;
 
-  version = "develop";
+  version = "0.0.1";
 
   canvas = document.querySelector('#cvas');
 
