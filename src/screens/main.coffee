@@ -7,6 +7,9 @@ screens[0] =
     new ImageItem(-100, 30, "img/creditsbutton.png")
   ]
   height: 300
+  music: new Audio
+
+screens[0].music.src = "aud/carnivalloader.mp3"
 
 screens[0].items[0].click = ->
   screens[0].eggoCount++

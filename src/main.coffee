@@ -16,6 +16,13 @@ update = ->
   for i in keysdown
     i = if i isnt 0 then 1 else 0
 
+  for o, i in screens
+    if o.music and i isnt screen
+      o.music.pause()
+      o.music.currentTime = 0
+    else
+      o.music.play()
+
 # Converts the in-game coordinates to real, on screen coordinates.
 toCanvasTerms = (x, y, height) ->
   originx = canvas.width / 2 - screens[screen].calcOrigin()
@@ -60,6 +67,11 @@ frame = ->
 
 # Now we start the game, finally.
 window.onload = ->
+  if localStorage and localStorage.muted is "true"
+    toggleMute()
+
+  document.querySelector("#mute").onclick = ->
+    toggleMute()
   requestAnimationFrame frame
 
 # getImageAlpha gets the alpha (opacity) of a certain pixel in an image.
@@ -108,3 +120,12 @@ window.onkeyup = (e) ->
 
 # Returns the status of a key by name or code from keysdown.
 keyStatus = (kid) -> keysdown[keys[kid] or kid]
+
+muted = false
+
+toggleMute = ->
+  muted = !muted
+  localStorage.muted = muted if localStorage
+  for i in screens
+    if i.music
+      i.music.volume = if muted then 0 else 1
