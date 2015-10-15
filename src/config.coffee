@@ -8,4 +8,4 @@ keys =
   down: 40
 eggo = 20 # Figure it out yourself
 mindown = 30 # Figure it out yourself
-version = "0.0.1" # The version number
+version = "0.0.1-alpha" # The version number
