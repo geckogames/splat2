@@ -2,7 +2,7 @@
   "name": "splat2",
   "description": "Splat redo",
   "scripts": {
-    "build": "cat src/config.coffee src/helpers.coffee src/main.coffee src/Item.coffee src/items/*.coffee src/screens/*.coffee | coffee -s -c > splat.js"
+    "build": "cat src/config.coffee src/helpers.coffee src/main.coffee src/Item.coffee src/items/*.coffee src/Screen.coffee src/screens/*.coffee | coffee -s -c > splat.js"
   },
   "repository": {
     "type": "git",

@@ -10,6 +10,7 @@ class Item
     }
 
 class ImageItem extends Item
-  constructor: (x, y, url) ->
+  constructor: (x, y, url, clickFunc = ->) ->
     super x, y
     @image.src = url
+    @click = clickFunc
