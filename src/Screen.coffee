@@ -1,7 +1,7 @@
 class Screen
-  calcOrigin: -> 0
-  constructor: (height, items, music, additional = {}) ->
-    @height = height
+  calcOriginX: -> 0
+  calcOriginY: -> 0
+  constructor: (items, music, additional = {}) ->
     @items = items
     @music = new Audio
     @music.src = music

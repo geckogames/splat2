@@ -4,12 +4,14 @@ ctx = canvas.getContext '2d'
 # Set some essential variables.
 screens = [] # The array (list) of screens
 screen = 0 # The screen to start on
+x = null # For map making.
 
 # The update function is triggered every tick of the game.
 update = ->
   # Loop through every item in the current screen and update it.
-  for i in screens[screen].items
-    i.update()
+  for j in screens[screen].items
+    for i in j
+      i.update()
 
   # Loop through every item in keysdown and change the keys that are marked as
   # being just pressed (2) so that they instead are labeled as held down (1).
@@ -35,12 +37,15 @@ render = ->
   ctx.fillStyle = "#fff"
   ctx.font = "10px sans-serif"
   ctx.clearRect 0, 0, canvas.width, canvas.height
-  ctx.fillText "#{config.credits} - v #{config.version}",
-  canvas.width / 2, canvas.height - 10
 
   for i in screens[screen].items
-    coords = helpers.toCanvasTerms i.x, i.y, i.image.height
-    ctx.drawImage i.image, coords.x, coords.y if i.image
+    for j in i
+      if j.image
+        coords = helpers.toCanvasTerms j.x, j.y
+        ctx.drawImage j.image, coords.x, coords.y
+
+  ctx.fillText "#{config.credits} - v #{config.version}",
+  canvas.width / 2, canvas.height - 10
 
 # This is the game loop.
 now = 0
@@ -69,14 +74,15 @@ window.onload = ->
 # Triggered whenever the canvas is clicked.
 canvas.onmouseup = (e) ->
   # Loop through every item on the current screen.
-  for i in screens[screen].items
-    if i.click # Only do the work if this item is clickable.
-      # Get the coordinates of the click.
-      coords = helpers.toCanvasTerms i.x, i.y, i.image.height
-      # Trigger the item's click event if the alpha of it's image is greater
-      # than alphaThreshold at the click point.
-      i.click() if helpers.getImageAlpha(i.image, e.clientX - coords.x,
-      e.clientY - coords.y) > config.alphaThreshold
+  for j in screens[screen].items
+    for i in j
+      if i.click # Only do the work if this item is clickable.
+        # Get the coordinates of the click.
+        coords = helpers.toCanvasTerms i.x, i.y
+        # Trigger the item's click event if the alpha of it's image is greater
+        # than alphaThreshold at the click point.
+        i.click() if helpers.getImageAlpha(i.image, e.clientX - coords.x,
+        e.clientY - coords.y) > config.alphaThreshold
 
 # A list of mapped keys that are down.
 # Values:

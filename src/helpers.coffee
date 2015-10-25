@@ -7,12 +7,13 @@ helpers =
       window.innerHeight || document.clientHeight || document.body.clientHeight
 
   # Converts the in-game coordinates to real, on screen coordinates.
-  toCanvasTerms: (x, y, height) ->
-    originx = canvas.width / 2 - screens[screen].calcOrigin()
-    originy = canvas.height / 2 - screens[screen].height / 2
+  toCanvasTerms: (x, y) ->
+    originx = canvas.width / 2 - screens[screen].calcOriginX() * config.tileSize
+    originy = canvas.height / 2 -
+    screens[screen].calcOriginY() * config.tileSize
     {
-      x: originx + x
-      y: canvas.height - (originy + y) - height
+      x: originx + x * config.tileSize
+      y: originy + y * config.tileSize
     }
 
   # Gets the current time as a timestamp.
@@ -41,3 +42,14 @@ helpers =
 
   # Returns the status of a key by name or code from keysdown.
   keyStatus: (kid) -> keysdown[config.keys[kid] or kid]
+
+  # Returns an array of items from a multidimensional array.
+  toGameMap: (multis, things) ->
+    result = []
+    for x, k in multis
+      result.push []
+      for a, i in x
+        for o, j in a
+          if things[o]
+            result[k].push things[o](j, i)
+    result
